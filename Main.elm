@@ -46,28 +46,34 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [ style [ ( "margin", "1em" ) ] ]
         ([ input
             [ onInput InputChanged
             , value initialUrl
-            , style [ ( "width", "100%" ) ]
+            , style [ ( "width", "70%" ) ]
             ]
             []
-         , br [] []
          , button [ onClick ConvertIt ] [ text "Ok" ]
          , br [] []
          , audio [ src model.audioUrl, controls True ] []
          , br [] []
-         , a [ href model.audioUrl, download True ] [ text "Télécharger" ]
+         , a [ href model.audioUrl, download True ] [ text "Download" ]
          , br [] []
          ]
             ++ (if model.downloading then
                     [ text "Downloading" ]
                 else if not (String.isEmpty model.errorMsg) then
-                    [ text "On non :(" ]
+                    [ text "Oh no :(" ]
                 else
                     []
                )
+            ++ [ footer [ style [ ( "position", "absolute" ), ( "bottom", "0" ) ] ]
+                    [ p []
+                        [ text "This is free software, source code on "
+                        , a [ href "https://github.com/cbenz/youtube-dl-audio" ] [ text "GitHub" ]
+                        ]
+                    ]
+               ]
         )
 
 
