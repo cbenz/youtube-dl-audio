@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Html.App
-import Html.Attributes exposing (href, src, controls, value, style, download)
+import Html.Attributes exposing (href, src, controls, placeholder, style, download)
 import Html.Events exposing (onClick, onInput)
 import Http
 import Json.Decode
@@ -49,7 +49,7 @@ view model =
     div [ style [ ( "margin", "1em" ) ] ]
         ([ input
             [ onInput InputChanged
-            , value initialUrl
+            , placeholder initialUrl
             , style [ ( "width", "70%" ) ]
             ]
             []
