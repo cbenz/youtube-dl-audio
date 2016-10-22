@@ -10,10 +10,12 @@ import String
 import Task
 
 
+initialUrl : String
 initialUrl =
     "https://www.youtube.com/watch?v=3VHUpGxFJJ8"
 
 
+main : Program Never
 main =
     Html.App.program
         { init = ( { url = initialUrl, downloading = False, audioUrl = "", errorMsg = "" }, Cmd.none )
