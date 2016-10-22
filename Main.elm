@@ -99,6 +99,6 @@ getAudio url =
         task =
             Http.get
                 (Json.Decode.at [ "info", "url" ] Json.Decode.string)
-                ("http://youtube-dl.appspot.com/api/info?format=bestaudio&url=" ++ url)
+                ("https://youtube-dl.appspot.com/api/info?format=bestaudio&url=" ++ url)
     in
         Task.perform FetchError FetchSuccess task
